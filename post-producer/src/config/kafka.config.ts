@@ -52,7 +52,15 @@ class KafkaConfig {
       console.log("Send to Topic failed: \n", err);
     }
   }
-
+  async clearTopic(topic: string) {
+    try {
+      await this.admin.deleteTopics({
+        topics: [topic]
+      })
+    } catch (err) {
+      console.log("Failed to clear topic: ", err);
+    }
+  }
   async disconnect() {
     try {
       console.log("Disconnecting kafka...")
