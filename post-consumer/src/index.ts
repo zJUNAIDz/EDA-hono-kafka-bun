@@ -1,9 +1,13 @@
 import { Hono } from 'hono'
+import { init } from './config/services/start.services'
 
 const app = new Hono()
-
+init();
 app.get('/', (c) => {
   return c.text('Hello Hono!')
 })
 
-export default app
+export default {
+  port: 3001,
+  fetch: app.fetch,
+}
