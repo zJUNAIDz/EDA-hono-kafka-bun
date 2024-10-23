@@ -42,7 +42,7 @@ class KafkaConfig {
 
   async sendToTopic(topic: string, message: string) {
     try {
-      console.log("Sending message: ", message);
+      console.log("Sending message: ", message);  
       await this.producer.send({
         topic,
         messages: [{ value: message }]
